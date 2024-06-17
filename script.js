@@ -1,3 +1,4 @@
-// script.js
+document.addEventListener("DOMContentLoaded", () => {
+  // DOM이 로드된 후 실행될 코드
 
-// Placeholder for future JavaScript code
+});

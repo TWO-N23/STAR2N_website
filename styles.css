@@ -1,111 +1,233 @@
+// /* styles.css */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: #fff;
-  background-color: #000;
+margin: 0;
+font-family: Arial, sans-serif;
+color: #fff;
+background-color: #000;
+}
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px;
+background-color: #000;
+height: 80px; /* 배너 높이 설정 */
+}
+
+.navbar .logo img {
+height: 100%; /* 로고를 배너 높이에 맞게 설정 */
+width: auto;
+}
+
+.navbar .nav-links {
+list-style: none;
+display: flex;
+gap: 20px;
+}
+
+.navbar .nav-links li {
+display: inline;
+}
+
+.navbar .nav-links a, .navbar .lang-toggle {
+color: #fff;
+text-decoration: none;
+font-size: 1rem;
 }
 
 .main-section {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
+position: relative;
+height: 100vh;
+overflow: hidden;
 }
 
 #bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: -1;
 }
 
-.overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+.video-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgba(0, 0, 0, 0.6); /* 오버레이 배경색 및 투명도 조정 */
 }
 
-.overlay h1 {
-  font-size: 3rem;
-  text-align: center;
+.headline {
+text-align: center;
+z-index: 1;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100%;
+}
+
+#headline-text-1, #headline-text-2, #headline-text-3 {
+font-size: 3rem;
+color: #fff;
+opacity: 0; /* 초기에는 투명 상태로 설정합니다 /
+position: absolute;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+animation: showText 12s linear infinite; / 애니메이션 설정 */
+}
+
+@keyframes showText {
+0%, 100% { opacity: 0; }
+10%, 30% { opacity: 1; }
+}
+
+#headline-text-1 {
+animation-delay: 0s; /* 첫 번째 문장은 0초 후에 시작합니다 */
+}
+
+#headline-text-2 {
+animation-delay: 4s; /* 두 번째 문장은 4초 후에 시작합니다 */
+}
+
+#headline-text-3 {
+animation-delay: 8s; /* 세 번째 문장은 8초 후에 시작합니다 */
+}
+
+.partners-section {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 50px;
+background-color: #111;
+border-bottom: 1px solid #333;
+overflow: hidden;
+position: relative;
+}
+
+.partners-logos {
+display: flex;
+animation: scroll 20s linear infinite;
+}
+
+.partners-logos img {
+max-width: 50%; /* 수정된 부분: 파트너 로고 크기를 50%로 조정 */
+margin: 0 20px;
+}
+
+@keyframes scroll {
+0% {
+transform: translateX(100%);
+}
+100% {
+transform: translateX(-100%);
+}
 }
 
 .content-section {
-  display: flex;
-  align-items: center;
-  padding: 50px;
-  background-color: #111;
-  border-bottom: 1px solid #333;
+padding: 50px;
+text-align: center;
+background-color: #000;
+color: #fff;
 }
 
-.content-section img {
-  max-width: 50%;
-  height: auto;
-  margin-right: 20px;
+.content-section h2 {
+font-size: 2.5rem;
+margin-bottom: 20px;
 }
 
-.text-container {
-  max-width: 50%;
+.content-section p {
+font-size: 1.25rem;
+margin-bottom: 20px;
 }
 
-.text-container h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+#portfolio {
+background-color: #111;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+padding: 20px;
 }
 
-.text-container p {
-  margin-bottom: 20px;
+.portfolio-item {
+background-color: transparent;
 }
 
-.text-container button {
-  padding: 10px 20px;
-  background-color: #007BFF;
-  border: none;
-  color: #fff;
-  cursor: pointer;
+.portfolio-item.video video {
+width: 70%; /* 현재 크기의 70% /
+height: auto; / 비율을 유지 /
+border-radius: 10px;
+display: block;
+margin: 0 auto; / 가운데 정렬 */
 }
 
-.text-container button:hover {
-  background-color: #0056b3;
+.portfolio-item.image img {
+width: 100%;
+height: 100%;
+border-radius: 10px;
 }
 
-.partners {
-  text-align: center;
-  padding: 50px;
+.portfolio-item.text {
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: left;
+color: #fff;
 }
 
-.partners img {
-  max-width: 100%;
-  height: auto;
+.portfolio-item.text h3 {
+margin-top: 0;
+color: #fff;
+}
+
+.portfolio-item.text p {
+margin: 10px 0;
+color: #ccc;
+}
+
+@media (min-width: 768px) {
+.portfolio-item
+(2n-1) {
+grid-column: 2 / 3;
+}
+.portfolio-item
+(2n) {
+grid-column: 1 / 2;
+}
 }
 
 .contact-section {
-  text-align: center;
-  padding: 50px;
-  background-color: #111;
+padding: 50px;
+text-align: center;
+background-color: #111;
 }
 
 .contact-section h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+font-size: 2rem;
+margin-bottom: 20px;
 }
 
 .contact-section p {
-  margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 .contact-section button {
-  padding: 10px 20px;
-  background-color: #007BFF;
-  border: none;
-  color: #fff;
-  cursor: pointer;
+padding: 10px 20px;
+background-color: #007BFF;
+border: none;
+color: #fff;
+cursor: pointer;
 }
 
-.contact-section button:hover {
-  background-color: #0056b3;
+.contact-section button
+{
+background-color: #0056b3;
 }

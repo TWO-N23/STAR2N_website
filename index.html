@@ -39,6 +39,17 @@
             text-decoration: none;
             font-size: 1rem;
         }
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
         .main-section {
             position: relative;
             height: 100vh;
@@ -147,7 +158,6 @@
         .portfolio-item img,
         .portfolio-item video {
             width: 48%;
-          
         }
         .portfolio-text {
             width: 48%;
@@ -169,6 +179,21 @@
         }
         /* 반응형 디자인 */
         @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .burger {
+                display: block;
+            }
+
             .portfolio-item {
                 flex-direction: column;
                 align-items: center;
@@ -207,7 +232,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand logo" href="#">
             <img src="images/logo.png" alt="STAR2N Logo">
@@ -217,11 +242,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto nav-links">
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#vision">Vision</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
-                <li class="nav-item"><button class="btn btn-link nav-link lang-toggle">EN ⬤</button></li>
+                <li class="nav-item"><a class="nav-link" href="#about" data-lang-en="About" data-lang-kr="소개">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#vision" data-lang-en="Vision" data-lang-kr="비전">Vision</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio" data-lang-en="Portfolio" data-lang-kr="포트폴리오">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact" data-lang-en="Contact Us" data-lang-kr="문의">Contact Us</a></li>
+                <li class="nav-item"><button class="btn btn-link nav-link lang-toggle" data-lang-en="EN ⬤" data-lang-kr="KR ⬤">EN ⬤</button></li>
             </ul>
         </div>
     </nav>
@@ -232,8 +257,8 @@
             <source src="videos/bg-video.mp4" type="video/mp4">
         </video>
         <div class="headline">
-            <h1 id="headline-text-1">Dive into Metaverse + AI</h1>
-            <h2 id="headline-text-2">A New Paradigm in Offline Marketing</h2>
+            <h1 id="headline-text-1" data-lang-en="Dive into Metaverse + AI" data-lang-kr="메타버스 + AI로 뛰어들기">Dive into Metaverse + AI</h1>
+            <h2 id="headline-text-2" data-lang-en="A New Paradigm in Offline Marketing" data-lang-kr="오프라인 마케팅의 새로운 패러다임">A New Paradigm in Offline Marketing</h2>
         </div>
     </section>
 
@@ -246,112 +271,69 @@
 
     <!-- Vision Section -->
     <section id="vision" class="content-section">
-   
-    <div class="content-section">
-        <h2>Creating the Future</h2>
-        <p>We develop AR/VR/MR technology to empower everyone to freely create and widely share the content they envision</p>
-      </div>
-      
+        <div class="content-section">
+            <h2 data-lang-en="Creating the Future" data-lang-kr="미래를 창조하다">Creating the Future</h2>
+            <p data-lang-en="We develop AR/VR/MR technology to empower everyone to freely create and widely share the content they envision" data-lang-kr="우리는 AR/VR/MR 기술을 개발하여 누구나 자유롭게 콘텐츠를 창작하고 널리 공유할 수 있도록 합니다.">We develop AR/VR/MR technology to empower everyone to freely create and widely share the content they envision</p>
+        </div>
+    </section>
 
-      <style>
-        /* Portfolio Section */
-        
-        .portfolio-card {
-            margin-bottom: 30px; /* 각 포트폴리오 카드 사이의 간격을 조정 */
-            display: flex; /* Flexbox를 이용해 내용을 좌우로 배열 */
-        }
-    
-        .portfolio-card video,
-        .portfolio-card img {
-            flex: 1; /* 비디오와 이미지를 동일한 너비로 설정 */
-            max-width: 100%; /* 너비가 넘어가지 않도록 최대 너비 설정 */
-            margin-right: 20px; /* 비디오와 이미지 사이의 간격 설정 */
-        }
-    
-        .portfolio-card-content {
-            flex: 2; /* 내용의 너비를 늘려주기 */
-        }
-    
-        .portfolio-card-content h3 {
-            font-size: 24px; /* 제목의 폰트 크기를 크게 설정 */
-            margin-bottom: 10px; /* 제목 아래 여백을 추가 */
-        }
-    
-        .portfolio-card-content p {
-            margin-top: 10px; /* 제목과 내용 사이의 간격을 늘림 */
-            text-align: left; /* 내용을 왼쪽 정렬 */
-        }
-    </style>
-    
     <!-- Portfolio Section -->
     <section id="portfolio" class="container portfolio-section">
-        <div class="portfolio-card">
+        <div class="portfolio-item">
             <video autoplay loop muted>
                 <source src="videos/portfolio-video1.mp4" type="video/mp4">
             </video>
-            <div class="portfolio-card-content">
-                <h3>3D Website - MotionLinkR&D</h3>
-                <p>Collaborating with MotionLink R&D, we've meticulously crafted 3D models of solar louvers, offering simulated insights into sunlight dynamics within indoor spaces.</p>
-            </div>
+            <div class="portfolio-text">
+                <h3 data-lang-en="3D Website - MotionLinkR&D" data-lang-kr="3D 웹사이트 - 모션링크R&D">3D Website - MotionLinkR&D</h3>
+            <p data-lang-en="Collaborating with MotionLink R&D, we've meticulously crafted 3D models of solar louvers, offering simulated insights into sunlight dynamics within indoor spaces." data-lang-kr="모션링크 R&D와 협력하여 태양 루버의 3D 모델을 정교하게 제작하여 실내 공간의 햇빛 역학에 대한 시뮬레이션 통찰력을 제공합니다.">Collaborating with MotionLink R&D, we've meticulously crafted 3D models of solar louvers, offering simulated insights into sunlight dynamics within indoor spaces.</p>
         </div>
-        <div class="portfolio-card">
+        </div>
+        
+        <div class="portfolio-item">
             <video autoplay loop muted>
                 <source src="videos/portfolio-video2.mp4" type="video/mp4">
             </video>
-            <div class="portfolio-card-content">
-                <h3>3D Website - TWO-N</h3>
-                <p>Pioneering in Metaverse website design. Our Virtual Showroom allows detailed product exploration through advanced 3D viewers. We transcend traditional 2D methods, focusing on immersive and impactful UI/UX research for virtual environments.</p>
-            </div>
+            <div class="portfolio-text">
+                <h3 data-lang-en="3D Website - TWO-N" data-lang-kr="3D 웹사이트 - TWO-N">3D Website - TWO-N</h3>
+            <p data-lang-en="Pioneering in Metaverse website design. Our Virtual Showroom allows detailed product exploration through advanced 3D viewers. We transcend traditional 2D methods, focusing on immersive and impactful UI/UX research for virtual environments." data-lang-kr="메타버스 웹사이트 디자인의 선구자. 당사의 가상 쇼룸은 고급 3D 뷰어를 통해 상세한 제품 탐색을 가능하게 합니다. 전통적인 2D 방식을 뛰어넘어 가상 환경의 몰입감 있고 영향력 있는 UI/UX 연구에 중점을 둡니다.">Pioneering in Metaverse website design. Our Virtual Showroom allows detailed product exploration through advanced 3D viewers. We transcend traditional 2D methods, focusing on immersive and impactful UI/UX research for virtual environments.</p>
         </div>
-        <div class="portfolio-card">
+        </div>
+        <div class="portfolio-item">
             <video autoplay loop muted>
                 <source src="videos/portfolio-video3.mp4" type="video/mp4">
             </video>
-            <div class="portfolio-card-content">
-                <h3>Our Platform, UNiTA</h3>
-                <p>A metaverse-based video conferencing service tailored for university students, exclusively available on mobile devices. Create virtual meetings where participants appear together in the same space.</p>
+            <div class="portfolio-text">
+                <h3 data-lang-en="Our Platform, UNiTA" data-lang-kr="우리의 플랫폼, UNiTA">Our Platform, UNiTA</h3>
+                <p data-lang-en="A metaverse-based video conferencing service tailored for university students, exclusively available on mobile devices. Create virtual meetings where participants appear together in the same space." data-lang-kr="대학생을 위한 메타버스 기반 화상 회의 서비스로, 모바일 장치에서만 사용할 수 있습니다. 참가자가 동일한 공간에 함께 있는 가상 회의를 만듭니다.">A metaverse-based video conferencing service tailored for university students, exclusively available on mobile devices. Create virtual meetings where participants appear together in the same space.</p>
             </div>
         </div>
-        <div class="portfolio-card">
+        <div class="portfolio-item">
             <img src="images/portfolio-image1.png" alt="Portfolio Image 1">
-            <div class="portfolio-card-content">
-                <h3>2D to 3D GAN</h3>
-                <p>2D to 3D GAN: Developing GAN technology to transform 2D images into 3D models. We are conducting research to enhance speed and improve output quality, making it accessible for general users.</p>
-            </div>
+            <div class="portfolio-text">
+                <h3 data-lang-en="2D image to 3D model generation" data-lang-kr="2D에서 3D모델 생성">2D image to 3D model generation</h3>
+            <p data-lang-en="Developing GAN technology to transform 2D images into 3D models. We are conducting research to enhance speed and improve output quality, making it accessible for general users." data-lang-kr="2D 이미지를 3D 모델로 변환하는 GAN 기술을 개발 중입니다. 속도를 높이고 출력 품질을 향상시키기 위한 연구를 진행하고 있으며, 일반 사용자가 접근할 수 있도록 하고 있습니다.">Developing GAN technology to transform 2D images into 3D models. We are conducting research to enhance speed and improve output quality, making it accessible for general users.</p>
+        </div>
         </div>
     </section>
-    
-
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or would like to get in touch, please contact us at <a href="mailto:star2n.official@gmail.com">star2n.official@gmail.com</a></p>
+        <h2 data-lang-en="Contact Us" data-lang-kr="문의하기">Contact Us</h2>
+        <p data-lang-en="If you have any questions or would like to get in touch, please contact us at" data-lang-kr="궁금한 사항이 있거나 문의하려면 다음 주소로 연락해 주세요.">If you have any questions or would like to get in touch, please contact us at</p>
+        <p><a href="mailto:contact@star2n.com" data-lang-en="contact@star2n.com" data-lang-kr="contact@star2n.com">contact@star2n.com</a></p>
     </section>
 
     <script>
         const langToggleBtn = document.querySelector('.lang-toggle');
-        const sections = document.querySelectorAll('section[id]');
-    
-        langToggleBtn.addEventListener('click', function() {
-            const lang = langToggleBtn.textContent.trim();
-            const oppositeLang = lang === 'EN' ? 'KR' : 'EN';
-    
-            langToggleBtn.textContent = oppositeLang;
-    
-            sections.forEach(section => {
-                const headings = section.querySelectorAll('h2, h3, h4, p, a, button');
-                headings.forEach(heading => {
-                    if (heading.textContent.includes('EN')) {
-                        heading.textContent = heading.textContent.replace('EN', oppositeLang);
-                    } else if (heading.textContent.includes('KR')) {
-                        heading.textContent = heading.textContent.replace('KR', oppositeLang);
-                    }
-                });
+        const textElements = document.querySelectorAll('[data-lang-en]');
+
+        langToggleBtn.addEventListener('click', () => {
+            const lang = langToggleBtn.textContent.includes('EN') ? 'kr' : 'en';
+            textElements.forEach(el => {
+                el.textContent = el.getAttribute(`data-lang-${lang}`);
             });
+            langToggleBtn.textContent = lang === 'en' ? 'EN ⬤' : 'KR ⬤';
         });
     </script>
-
-    <script src="script.js"></script>
 </body>
 </html>

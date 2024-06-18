@@ -1,32 +1,27 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const langToggle = document.querySelector('.lang-toggle');
-    const headlines = {
-        en: {
-            headline1: "Dive into Metaverse + AI",
-            headline2: "A New Paradigm in Offline Marketing"
-        },
-        kr: {
-            headline1: "메타버스 + AI로의 다이빙",
-            headline2: "오프라인 마케팅의 새로운 패러다임"
-        }
-    };
-    let currentLang = "en";
+const burger = document.querySelector('.burger');
+const navLinks = document.querySelector('.nav-links');
 
-    langToggle.addEventListener("click", function() {
-        currentLang = currentLang === "en" ? "kr" : "en";
-        document.getElementById("headline-text-1").textContent = headlines[currentLang].headline1;
-        document.getElementById("headline-text-2").textContent = headlines[currentLang].headline2;
-        langToggle.textContent = currentLang === "en" ? "EN/KR" : "한/영";
-    });
+burger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
 
-    const contactBtn = document.querySelector('.contact-section button');
+const langToggleBtn = document.querySelector('.lang-toggle');
+const sections = document.querySelectorAll('section[id]');
 
-    contactBtn.addEventListener('click', function() {
-        const emailAddress = 'star2n.official@gmail.com';
-        const subject = 'Question from STAR2N Metaverse Store';
-        const body = 'Hello STAR2N team,';
+langToggleBtn.addEventListener('click', function() {
+    const lang = langToggleBtn.textContent.trim();
+    const oppositeLang = lang === 'EN' ? 'KR' : 'EN';
 
-        const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailtoLink;
+    langToggleBtn.textContent = oppositeLang;
+
+    sections.forEach(section => {
+        const headings = section.querySelectorAll('h2, h3, h4, p, a, button');
+        headings.forEach(heading => {
+            if (heading.textContent.includes('EN')) {
+                heading.textContent = heading.textContent.replace('EN', oppositeLang);
+            } else if (heading.textContent.includes('KR')) {
+                heading.textContent = heading.textContent.replace('KR', oppositeLang);
+            }
+        });
     });
 });

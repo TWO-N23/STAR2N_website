@@ -1,3 +1,60 @@
+.partners-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  background-color: #111;
+  border-bottom: 1px solid #333;
+  overflow: hidden;
+  position: relative;
+}
+
+.partners-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.partners-logos img {
+  max-width: 100%;
+  margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .partners-logos .desktop-logo {
+    display: none; /* 모바일 환경에서는 PC용 이미지 숨기기 */
+  }
+
+  .partners-logos {
+    width: 300%; /* 이미지가 끊김 없이 롤링되도록 width를 확장 */
+    animation: scroll 20s linear infinite;
+  }
+
+  .partners-logos img {
+    max-width: 300%; /* 모바일 환경에서 이미지 크기 3배로 키우기 */
+    margin: 0 10px; /* 여백을 줄여서 더 많은 이미지를 표시할 수 있도록 */
+  }
+}
+
+@media (min-width: 769px) {
+  .partners-logos .mobile-logo {
+    display: none; /* PC 환경에서는 모바일용 이미지 숨기기 */
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+
 .portfolio-section {
   display: flex;
   flex-wrap: wrap;

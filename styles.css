@@ -1,94 +1,70 @@
-.partners-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 50px;
-  background-color: #111;
-  border-bottom: 1px solid #333;
-  overflow: hidden;
-  position: relative;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADI Reseller of GH Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main Section with Background Video -->
+    <section class="main-section">
+        <video autoplay muted loop id="bg-video">
+            <source src="videos/bg-video.mp4" type="video/mp4">
+        </video>
+        <div class="headline">
+            <h1>Welcome to GH Product Showcase</h1>
+            <h2>Your Trusted Reseller: ADI</h2>
+        </div>
+    </section>
 
-.partners-logos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
+    <!-- First Section: Video on the Left, Text on the Right -->
+    <section class="content-section alternating-section">
+        <div class="video-container">
+            <video autoplay loop muted width="1080" height="1920">
+                <source src="videos/product-video1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="text-container">
+            <h2>GH Company Product 1</h2>
+            <p>Discover the innovative features of Product 1 from GH, designed to bring efficiency and performance to your operations.</p>
+        </div>
+    </section>
 
-.partners-logos img {
-  max-width: 100%;
-  margin: 0 20px;
-}
+    <!-- Second Section: Text on the Left, Video on the Right -->
+    <section class="content-section alternating-section">
+        <div class="text-container">
+            <h2>GH Company Product 2</h2>
+            <p>Explore how Product 2 from GH can revolutionize the way you work, providing unmatched quality and reliability.</p>
+        </div>
+        <div class="video-container">
+            <video autoplay loop muted width="1080" height="1920">
+                <source src="videos/product-video2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
 
-@media (max-width: 768px) {
-  .partners-logos .desktop-logo {
-    display: none; /* 모바일 환경에서는 PC용 이미지 숨기기 */
-  }
+    <!-- Additional Main Section -->
+    <section class="main-section secondary-section">
+        <div class="headline">
+            <h2>More About GH's Cutting-Edge Solutions</h2>
+            <p>Discover the full range of GH products, now available through ADI.</p>
+        </div>
+    </section>
 
-  .partners-logos {
-    width: 300%; /* 이미지가 끊김 없이 롤링되도록 width를 확장 */
-    animation: scroll 20s linear infinite;
-  }
+    <!-- Subtle About Link (optional, can be a footer link) -->
+    <footer>
+        <a href="#about" class="about-link">About ADI</a>
+    </footer>
 
-  .partners-logos img {
-    max-width: 300%; /* 모바일 환경에서 이미지 크기 3배로 키우기 */
-    margin: 0 10px; /* 여백을 줄여서 더 많은 이미지를 표시할 수 있도록 */
-  }
-}
+    <!-- About Section (Hidden until clicked) -->
+    <section id="about" class="about-section" style="display: none;">
+        <div class="about-container">
+            <h2>About ADI</h2>
+            <p>ADI is proud to be an official reseller of GH products, bringing top-tier solutions to businesses worldwide. Learn more about our journey and commitment to excellence.</p>
+        </div>
+    </section>
 
-@media (min-width: 769px) {
-  .partners-logos .mobile-logo {
-    display: none; /* PC 환경에서는 모바일용 이미지 숨기기 */
-  }
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-
-
-.portfolio-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 50px;
-  background-color: #000;
-  color: #fff;
-}
-
-.portfolio-card {
-  width: 100%;
-  margin-bottom: 50px;
-  position: relative;
-}
-
-.portfolio-card video,
-.portfolio-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-}
-
-.portfolio-card-content {
-  padding: 20px;
-}
-
-.portfolio-card-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.portfolio-card-content p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
+    <script src="script.js"></script>
+</body>
+</html>

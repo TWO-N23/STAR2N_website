@@ -1,70 +1,210 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADI Reseller of GH Products</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Main Section with Background Video -->
-    <section class="main-section">
-        <video autoplay muted loop id="bg-video">
-            <source src="videos/bg-video.mp4" type="video/mp4">
-        </video>
-        <div class="headline">
-            <h1>Welcome to GH Product Showcase</h1>
-            <h2>Your Trusted Reseller: ADI</h2>
-        </div>
-    </section>
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
 
-    <!-- First Section: Video on the Left, Text on the Right -->
-    <section class="content-section alternating-section">
-        <div class="video-container">
-            <video autoplay loop muted width="1080" height="1920">
-                <source src="videos/product-video1.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="text-container">
-            <h2>GH Company Product 1</h2>
-            <p>Discover the innovative features of Product 1 from GH, designed to bring efficiency and performance to your operations.</p>
-        </div>
-    </section>
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-    <!-- Second Section: Text on the Left, Video on the Right -->
-    <section class="content-section alternating-section">
-        <div class="text-container">
-            <h2>GH Company Product 2</h2>
-            <p>Explore how Product 2 from GH can revolutionize the way you work, providing unmatched quality and reliability.</p>
-        </div>
-        <div class="video-container">
-            <video autoplay loop muted width="1080" height="1920">
-                <source src="videos/product-video2.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+}
 
-    <!-- Additional Main Section -->
-    <section class="main-section secondary-section">
-        <div class="headline">
-            <h2>More About GH's Cutting-Edge Solutions</h2>
-            <p>Discover the full range of GH products, now available through ADI.</p>
-        </div>
-    </section>
+.logo img {
+    height: 40px;
+}
 
-    <!-- Subtle About Link (optional, can be a footer link) -->
-    <footer>
-        <a href="#about" class="about-link">About ADI</a>
-    </footer>
+.nav-links {
+    display: flex;
+    list-style: none;
+}
 
-    <!-- About Section (Hidden until clicked) -->
-    <section id="about" class="about-section" style="display: none;">
-        <div class="about-container">
-            <h2>About ADI</h2>
-            <p>ADI is proud to be an official reseller of GH products, bringing top-tier solutions to businesses worldwide. Learn more about our journey and commitment to excellence.</p>
-        </div>
-    </section>
+.nav-links li {
+    margin-left: 2rem;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 2rem;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 10px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+section {
+    padding: 5rem 10%;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.product-features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature {
+    flex-basis: 30%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.feature img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+#benefits ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#benefits li {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+#benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #007bff;
+}
+
+.stat-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    flex-basis: 45%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.stat-item h3 {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#contact input,
+#contact textarea {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#contact button {
+    padding: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .burger {
+        display: block;
+    }
+
+    section {
+        padding: 3rem 5%;
+    }
+
+    .feature, .stat-item {
+        flex-basis: 100%;
+    }
+}

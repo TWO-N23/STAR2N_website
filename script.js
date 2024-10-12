@@ -1,23 +1,27 @@
-// About 링크 클릭 시 Vision과 Portfolio 섹션 보이기/숨기기 기능
-document.querySelector('.about-link').addEventListener('click', function(event) {
-    event.preventDefault(); // 기본 동작 방지
-    const aboutContent = document.querySelector('#about-content'); // Vision과 Portfolio가 있는 섹션
-    if (aboutContent.style.display === 'none' || !aboutContent.style.display) {
-        aboutContent.style.display = 'block'; // 섹션 보이기
-        aboutContent.scrollIntoView({ behavior: 'smooth' }); // 부드럽게 스크롤
-    } else {
-        aboutContent.style.display = 'none'; // 섹션 숨기기
-    }
+const burger = document.querySelector('.burger');
+const navLinks = document.querySelector('.nav-links');
+
+burger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
 });
 
-// 언어 전환 기능 유지
 const langToggleBtn = document.querySelector('.lang-toggle');
-const textElements = document.querySelectorAll('[data-lang-en]');
+const sections = document.querySelectorAll('section[id]');
 
-langToggleBtn.addEventListener('click', () => {
-    const lang = langToggleBtn.textContent.includes('EN') ? 'kr' : 'en';
-    textElements.forEach(el => {
-        el.textContent = el.getAttribute(`data-lang-${lang}`);
+langToggleBtn.addEventListener('click', function() {
+    const lang = langToggleBtn.textContent.trim();
+    const oppositeLang = lang === 'EN' ? 'KR' : 'EN';
+
+    langToggleBtn.textContent = oppositeLang;
+
+    sections.forEach(section => {
+        const headings = section.querySelectorAll('h2, h3, h4, p, a, button');
+        headings.forEach(heading => {
+            if (heading.textContent.includes('EN')) {
+                heading.textContent = heading.textContent.replace('EN', oppositeLang);
+            } else if (heading.textContent.includes('KR')) {
+                heading.textContent = heading.textContent.replace('KR', oppositeLang);
+            }
+        });
     });
-    langToggleBtn.textContent = lang === 'en' ? 'EN ⬤' : 'KR ⬤';
 });

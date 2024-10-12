@@ -1,109 +1,342 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>매직파사드 XR Mirror - 혁신적인 가상피팅 솔루션</title>
+    <title>STAR2N Metaverse Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Satoshi, sans-serif;
+            color: #fff;
+            background-color: #000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #000;
+            height: 80px;
+        }
+        .navbar .logo img {
+            max-height: 32px;
+            width: auto;
+        }
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar .nav-links li {
+            display: inline;
+        }
+        .navbar .nav-links a, .navbar .lang-toggle {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        .main-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .headline {
+            text-align: center;
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+        }
+        #headline-text-1, #headline-text-2 {
+            font-size: 3rem;
+            color: #fff;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: showText 8s linear infinite;
+            font-weight: bold;
+        }
+        @keyframes showText {
+            0% { opacity: 0; }
+            5%, 25% { opacity: 1; }
+            30%, 100% { opacity: 0; }
+        }
+        #headline-text-1 {
+            animation: showText 8s linear infinite;
+            animation-delay: 0s;
+        }
+        #headline-text-2 {
+            animation: showText 8s linear infinite;
+            animation-delay: 4s;
+        }
+    
+        .partners-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            background-color: #111;
+            border-bottom: 1px solid #333;
+            overflow: hidden;
+            position: relative;
+        }
+        .partners-logos {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+        .partners-logos img {
+            max-width: 100%;
+            margin: 0 20px;
+        }
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        .content-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+        }
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .content-section p {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+        
+        .portfolio-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+        .portfolio-item img,
+        .portfolio-item video {
+            width: 48%;
+        }
+        .portfolio-text {
+            width: 48%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .portfolio-text h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .portfolio-text p {
+            font-size: 1.125rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .portfolio-item {
+                flex-direction: column;
+                align-items: center;
+            }
+            .portfolio-item img,
+            .portfolio-item video,
+            .portfolio-text {
+                width: 100%;
+            }
+        }
+        .contact-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #111;
+        }
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .contact-section p {
+            margin-bottom: 20px;
+        }
+        .contact-section button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+        .contact-section button:hover {
+            background-color: #0056b3;
+        }
+        #vision {
+            margin-bottom: 100px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="images/logo.png" alt="스타투엔 로고">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#product">제품 소개</a></li>
-                <li><a href="#benefits">장점</a></li>
-                <li><a href="#stats">통계</a></li>
-                <li><a href="#contact">연락처</a></li>
-                <li><a class="about-link" href="#">회사 소개</a></li> <!-- About 버튼 -->
+     <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand logo" href="#">
+            <img src="images/logo.png" alt="STAR2N Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto nav-links">
+                <li class="nav-item"><a class="nav-link" href="#about" data-lang-en="About" data-lang-kr="소개">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#vision" data-lang-en="Vision" data-lang-kr="비전">Vision</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio" data-lang-en="Portfolio" data-lang-kr="포트폴리오">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact" data-lang-en="Contact Us" data-lang-kr="문의">Contact Us</a></li>
+                <li class="nav-item"><button class="btn btn-link nav-link lang-toggle" data-lang-en="EN ⬤" data-lang-kr="KR ⬤">EN ⬤</button></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main>
-        <!-- XR Mirror 소개 섹션 -->
-        <section id="hero">
-            <div class="hero-content">
-                <h1>슈즈 브랜드를 위한 XR(AR+MR) Mirror</h1>
-                <h2>1개월 무료체험 제안</h2>
-                <p>인터랙티브 가상피팅 솔루션</p>
-                <a href="#contact" class="cta-button">무료체험 신청하기</a>
+    <!-- Main Section with Video Background -->
+    <section class="main-section">
+        <video autoplay muted loop id="bg-video">
+            <source src="videos/bg-video.mp4" type="video/mp4">
+        </video>
+        <div class="headline">
+            <h1 id="headline-text-1" data-lang-en="Dive into Metaverse + AI" data-lang-kr="메타버스 + AI로 뛰어들기">Dive into Metaverse + AI</h1>
+            <h2 id="headline-text-2" data-lang-en="A New Paradigm in Offline Marketing" data-lang-kr="오프라인 마케팅의 새로운 패러다임">A New Paradigm in Offline Marketing</h2>
+        </div>
+    </section>
+
+  <!-- Partners Section -->
+    <section class="partners-section">
+    <div class="partners-logos">
+        <img class="desktop-logo" src="images/partner1.png" alt="Partner 1"> <!-- PC 환경용 이미지 -->
+        <img class="mobile-logo" src="images/partner2.png" alt="Partner 2"> <!-- 모바일 환경용 이미지 -->
+        </div>
+    </section>
+
+
+    <!-- Vision Section -->
+    <section id="vision" class="content-section">
+        <div class="content-section">
+            <h2 data-lang-en="Creating the Future" data-lang-kr="미래를 창조하다">Creating the Future</h2>
+            <p data-lang-en="We develop AR/VR/MR technology to empower everyone to freely create and widely share the content they envision" data-lang-kr="우리는 AR/VR/MR 기술을 개발하여 누구나 자유롭게 콘텐츠를 창작하고 널리 공유할 수 있도록 합니다.">We develop AR/VR/MR technology to empower everyone to freely create and widely share the content they envision</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="container portfolio-section">
+        <div class="portfolio-item">
+            <video autoplay loop muted>
+                <source src="videos/portfolio-video1.mp4" type="video/mp4">
+            </video>
+            <div class="portfolio-text">
+                <h3 data-lang-en="3D Website - MotionLinkR&D" data-lang-kr="3D 웹사이트 - 모션링크R&D">3D Website - MotionLinkR&D</h3>
+            <p data-lang-en="Collaborating with MotionLink R&D, we've meticulously crafted 3D models of solar louvers, offering simulated insights into sunlight dynamics within indoor spaces." data-lang-kr="모션링크 R&D와 협력하여 태양 루버의 3D 모델을 정교하게 제작하여 실내 공간의 햇빛 역학에 대한 시뮬레이션 통찰력을 제공합니다.">Collaborating with MotionLink R&D, we've meticulously crafted 3D models of solar louvers, offering simulated insights into sunlight dynamics within indoor spaces.</p>
+        </div>
+        </div>
+        
+        <div class="portfolio-item">
+            <video autoplay loop muted>
+                <source src="videos/portfolio-video2.mp4" type="video/mp4">
+            </video>
+            <div class="portfolio-text">
+                <h3 data-lang-en="3D Website - TWO-N" data-lang-kr="3D 웹사이트 - TWO-N">3D Website - TWO-N</h3>
+            <p data-lang-en="Pioneering in Metaverse website design. Our Virtual Showroom allows detailed product exploration through advanced 3D viewers. We transcend traditional 2D methods, focusing on immersive and impactful UI/UX research for virtual environments." data-lang-kr="메타버스 웹사이트 디자인의 선구자. 당사의 가상 쇼룸은 고급 3D 뷰어를 통해 상세한 제품 탐색을 가능하게 합니다. 전통적인 2D 방식을 뛰어넘어 가상 환경의 몰입감 있고 영향력 있는 UI/UX 연구에 중점을 둡니다.">Pioneering in Metaverse website design. Our Virtual Showroom allows detailed product exploration through advanced 3D viewers. We transcend traditional 2D methods, focusing on immersive and impactful UI/UX research for virtual environments.</p>
+        </div>
+        </div>
+        <div class="portfolio-item">
+            <video autoplay loop muted>
+                <source src="videos/portfolio-video3.mp4" type="video/mp4">
+            </video>
+            <div class="portfolio-text">
+                <h3 data-lang-en="Our Platform, UNiTA" data-lang-kr="우리의 플랫폼, UNiTA">Our Platform, UNiTA</h3>
+                <p data-lang-en="A metaverse-based video conferencing service tailored for university students, exclusively available on mobile devices. Create virtual meetings where participants appear together in the same space." data-lang-kr="대학생을 위한 메타버스 기반 화상 회의 서비스로, 모바일 장치에서만 사용할 수 있습니다. 참가자가 동일한 공간에 함께 있는 가상 회의를 만듭니다.">A metaverse-based video conferencing service tailored for university students, exclusively available on mobile devices. Create virtual meetings where participants appear together in the same space.</p>
             </div>
-        </section>
+        </div>
+        <div class="portfolio-item">
+            <img src="images/portfolio-image1.png" alt="Portfolio Image 1">
+            <div class="portfolio-text">
+                <h3 data-lang-en="2D image to 3D model generation" data-lang-kr="2D에서 3D모델 생성">2D image to 3D model generation</h3>
+            <p data-lang-en="Developing GAN technology to transform 2D images into 3D models. We are conducting research to enhance speed and improve output quality, making it accessible for general users." data-lang-kr="2D 이미지를 3D 모델로 변환하는 GAN 기술을 개발 중입니다. 속도를 높이고 출력 품질을 향상시키기 위한 연구를 진행하고 있으며, 일반 사용자가 접근할 수 있도록 하고 있습니다.">Developing GAN technology to transform 2D images into 3D models. We are conducting research to enhance speed and improve output quality, making it accessible for general users.</p>
+        </div>
+        </div>
+    </section>
 
-        <!-- 제품 소개 -->
-        <section id="product">
-            <h2>글로벌 브랜드의 꾸준한 러브콜을 받는 국내 유일 XR Mirror</h2>
-            <p>스타투엔은 Zero10의 XR Mirror 국내 판매 공식 파트너로, 최첨단 XR/AI 솔루션으로 리테일 공간을 혁신합니다.</p>
-            <div class="product-features">
-                <div class="feature">
-                    <img src="images/feature1.png" alt="기존 LED 스크린 전환">
-                    <p>기존의 LED 스크린을 강력한 비즈니스 도구로 전환</p>
-                </div>
-                <div class="feature">
-                    <img src="images/feature2.png" alt="몰입형 가상피팅 경험">
-                    <p>몰입형 가상피팅 경험 제공</p>
-                </div>
-                <div class="feature">
-                    <img src="images/feature3.png" alt="고객과 브랜드 상호작용">
-                    <p>고객과 브랜드의 상호작용 향상</p>
-                </div>
-            </div>
-        </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 data-lang-en="Contact Us" data-lang-kr="문의하기">Contact Us</h2>
+        <p data-lang-en="If you have any questions or would like to get in touch, please contact us at" data-lang-kr="궁금한 사항이 있거나 문의하려면 다음 주소로 연락해 주세요.">If you have any questions or would like to get in touch, please contact us at</p>
+        <p><a href="mailto:contact@star2n.com" data-lang-en="contact@star2n.com" data-lang-kr="contact@star2n.com">contact@star2n.com</a></p>
+    </section>
 
-        <!-- Benefits -->
-        <section id="benefits">
-            <h2>고객의 구매욕구를 자극하는 XR Mirror의 4가지 장점</h2>
-            <ul>
-                <li>참여를 유도해서 고객이 브랜드를 더 오래 기억할 수 있어요.</li>
-                <li>MZ 세대를 타겟으로 한 이슈화가 가능해요.</li>
-                <li>유의미한 고객 체험데이터를 측정할 수 있어요.</li>
-                <li>방문 고객수와 구매전환율 증대에 도움이 돼요.</li>
-            </ul>
-        </section>
+    <script>
+        const langToggleBtn = document.querySelector('.lang-toggle');
+        const textElements = document.querySelectorAll('[data-lang-en]');
 
-        <!-- Vision과 Portfolio는 About 클릭 시 보이는 섹션 -->
-        <section id="about-content" style="display:none;">
-            <!-- Vision Section -->
-            <section id="vision" class="content-section">
-                <h2>Creating the Future</h2>
-                <p>We develop AR/VR/MR technology to empower everyone to freely create and widely share the content they envision.</p>
-            </section>
-
-            <!-- Portfolio Section -->
-            <section id="portfolio" class="container portfolio-section">
-                <div class="portfolio-item">
-                    <video autoplay loop muted>
-                        <source src="videos/portfolio-video1.mp4" type="video/mp4">
-                    </video>
-                    <div class="portfolio-text">
-                        <h3>3D Website - MotionLinkR&D</h3>
-                        <p>Collaborating with MotionLink R&D, we've meticulously crafted 3D models of solar louvers, offering simulated insights into sunlight dynamics within indoor spaces.</p>
-                    </div>
-                </div>
-            </section>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>1개월 무료체험 신청</h2>
-            <p>고객의 체류시간 및 결제건수(매출) 증가를 직접 경험해보세요.</p>
-            <form id="contact-form">
-                <input type="text" name="name" placeholder="이름" required>
-                <input type="email" name="email" placeholder="이메일" required>
-                <input type="tel" name="phone" placeholder="전화번호" required>
-                <textarea name="message" placeholder="메시지" required></textarea>
-                <button type="submit">무료체험 신청하기</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 스타투엔. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+        langToggleBtn.addEventListener('click', () => {
+            const lang = langToggleBtn.textContent.includes('EN') ? 'kr' : 'en';
+            textElements.forEach(el => {
+                el.textContent = el.getAttribute(`data-lang-${lang}`);
+            });
+            langToggleBtn.textContent = lang === 'en' ? 'EN ⬤' : 'KR ⬤';
+        });
+    </script>
 </body>
 </html>

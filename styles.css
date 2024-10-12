@@ -1,210 +1,94 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+.partners-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  background-color: #111;
+  border-bottom: 1px solid #333;
+  overflow: hidden;
+  position: relative;
 }
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.partners-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-}
-
-.logo img {
-    height: 40px;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-}
-
-.nav-links li {
-    margin-left: 2rem;
-}
-
-.nav-links a {
-    color: #333;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #007bff;
-}
-
-#hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-image: url('images/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-}
-
-.hero-content {
-    max-width: 800px;
-    padding: 2rem;
-    background-color: rgba(0,0,0,0.7);
-    border-radius: 10px;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero-content h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #0056b3;
-}
-
-section {
-    padding: 5rem 10%;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.product-features {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.feature {
-    flex-basis: 30%;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.feature img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
-}
-
-#benefits ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-#benefits li {
-    margin-bottom: 1rem;
-    padding-left: 2rem;
-    position: relative;
-}
-
-#benefits li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #007bff;
-}
-
-.stat-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.stat-item {
-    flex-basis: 45%;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.stat-item h3 {
-    font-size: 3rem;
-    color: #007bff;
-    margin-bottom: 0.5rem;
-}
-
-#contact form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-#contact input,
-#contact textarea {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-#contact button {
-    padding: 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#contact button:hover {
-    background-color: #0056b3;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
+.partners-logos img {
+  max-width: 100%;
+  margin: 0 20px;
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-    
-    .burger {
-        display: block;
-    }
+  .partners-logos .desktop-logo {
+    display: none; /* 모바일 환경에서는 PC용 이미지 숨기기 */
+  }
 
-    section {
-        padding: 3rem 5%;
-    }
+  .partners-logos {
+    width: 300%; /* 이미지가 끊김 없이 롤링되도록 width를 확장 */
+    animation: scroll 20s linear infinite;
+  }
 
-    .feature, .stat-item {
-        flex-basis: 100%;
-    }
+  .partners-logos img {
+    max-width: 300%; /* 모바일 환경에서 이미지 크기 3배로 키우기 */
+    margin: 0 10px; /* 여백을 줄여서 더 많은 이미지를 표시할 수 있도록 */
+  }
+}
+
+@media (min-width: 769px) {
+  .partners-logos .mobile-logo {
+    display: none; /* PC 환경에서는 모바일용 이미지 숨기기 */
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+
+.portfolio-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #000;
+  color: #fff;
+}
+
+.portfolio-card {
+  width: 100%;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.portfolio-card video,
+.portfolio-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.portfolio-card-content {
+  padding: 20px;
+}
+
+.portfolio-card-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.portfolio-card-content p {
+  font-size: 1rem;
+  line-height: 1.6;
 }
